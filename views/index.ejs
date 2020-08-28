@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ./partials/head %>
+  </head>
+  <body>
+
+    <!-- START: header -->
+    <header>
+      <% include ./partials/header %>
+    </header>
+    <!-- END: header -->
+
+    <main role="main">
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row align-items-center justify-content-center text-wrap text-break" id="notificationBarRow">
+              <div class="col-md-8">
+                <% include ./partials/notificationbar %>
+              </div>
+          </div>
+          <div class="row" id="loadingRow">Loading...</div>
+          <div class="row align-items-center justify-content-center" id="howItWorksTenderDocsRow">
+            <div class="col-md-8">
+              <h4>
+                <p class="text-muted text-center">FEATURES</p>
+              </h4>
+            </div>
+            <div class = "row">
+                <div class="card-deck col-md-12">
+                  <div class="card shadow-sm border-primary">
+                    <div class="card-header text-primary"><b>上传招标文件</b></div>
+                    <div class="card-body text-primary">
+                      <p class="card-text">招标文件的ZIP文件由供应商公司的授权代表上载。计算出ZIP文件的哈希值，并将其与提交日期一起存储在区块链中，以供以后验证。</p>
+                    </div>
+                  </div>
+                  <div class="card shadow-sm border-secondary">
+                    <div class="card-header text-secondary"><b>验证招标文件</b></div>
+                    <div class="card-body text-secondary">
+                      <p class="card-text">在投标审查过程中，发布投标的公司的授权代表从其投标门户上载ZIP文件。如果在提交后修改了ZIP文件，则哈希值将与存储在区块链中的哈希值不匹配，供应商将被取消资格。同样，这可用于验证之前尚未提交过ZIP文件。</p>
+                    </div>
+                  </div>
+                  <div class="card shadow-sm border-warning">
+                    <div class="card-header text-warning"><b>检索投标者提交人地址</b></div>
+                    <div class="card-body text-warning">
+                      <p class="card-text">检索负责提交投标提交ZIP文件的地址。此功能仅适用于系统管理员。</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="card-deck col-md-12">
+                  <div class="card shadow-sm border-info">
+                    <div class="card-header text-info"><b>计算投标数量</b></div>
+                    <div class="card-body text-info">
+                      <p class="card-text">计算投标的数量。此功能仅适用于系统管理员。</p>
+                    </div>
+                  </div>
+                  <div class="card shadow-sm border-dark">
+                    <div class="card-header text-dark"><b>检查合约状态</b></div>
+                    <div class="card-body text-dark">
+                      <p class="card-text">检查合约是否可用。</p>
+                    </div>
+                  </div>
+                  <div class="card shadow-sm border-success">
+                    <div class="card-header text-success"><b>切换合约状态</b></div>
+                    <div class="card-body text-success">
+                      <p class="card-text">在可用状态和不可用状态（断路器）之间切换合约。此功能仅适用于管理员。</p>
+                    </div>
+                  </div>
+                  <div class="card shadow-sm border-danger">
+                    <div class="card-header text-danger"><b>销毁合约</b></div>
+                    <div class="card-body text-danger">
+                      <p class="card-text">从区块链中删除SimpleFile合约 此功能仅适用于管理员。</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="row align-items-center justify-content-center" id="uploadTenderDocsRow">
+            <div class="col-md-8 order-md-1">
+              <h4>
+                <p class="text-muted text-center">上传招标文件</p>
+              </h4>
+              <small class="text-muted">ZIP文件的大小限制为10MB</small>
+              <form class="card p-2" id="uploadTenderDocsForm">
+                <div class="custom-file mb-3">
+                  <input type="file" accept=".zip,application/zip" class="custom-file-input" id="uploadTenderDocsInputFileZIP" required>
+                  <label class="custom-file-label" for="uploadTenderDocsInputFileZIP" id="uploadTenderDocsLabelFileZIP">上传招标文件</label>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="uploadTenderDocsInputTextSubmittedBy">提交人（姓名）</label>
+                    <input type="text" class="form-control" id="uploadTenderDocsInputTextSubmittedBy" placeholder="" required>
+                    <small class="text-muted">供应商代表全名</small>
+                    <div class="invalid-feedback">
+                      无效供应商代表全名.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="uploadTenderDocsInputTextIDNum">识别码</label>
+                    <input type="text" class="form-control" id="uploadTenderDocsInputTextIDNum" placeholder="" required>
+                    <small class="text-muted">提交招标文件人的识别码</small>
+                    <div class="invalid-feedback">
+                      提交招标文件的人的识别码无效
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="uploadTenderDocsSelectTenderNum">标书类型</label>
+                    <select class="custom-select d-block w-100" id="uploadTenderDocsSelectTenderNum" required>
+                      <option value="">选择标书类型</option>
+                      <option>1001 - 数据中心维护</option>
+                      <option>1002 - 公司装修服务</option>
+                      <option>1003 - 公司硬件设备采购</option>
+                      <option>1004 - 安全信息平台服务</option>
+                      <option>1005 - 可增加（系统管理员）</option>
+                    </select>
+                    <small class="text-muted">公开招标编号</small>
+                    <div class="invalid-feedback">
+                      请选择有效标书类型 #.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="uploadTenderDocsInputTextSupplierID">供应商编号</label>
+                    <input type="text" class="form-control" id="uploadTenderDocsInputTextSupplierID" placeholder="" required>
+                    <small class="text-muted">供应商工商执照ID</small>
+                    <div class="invalid-feedback">
+                      供应商工商执照ID无效.
+                    </div>
+                  </div>
+                </div>
+                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                  <input type="checkbox" class="custom-control-input" id="uploadTenderDocsInputCheckboxAuthorised" required>
+                  <label class="custom-control-label" for="uploadTenderDocsInputCheckboxAuthorised">我确认我已被正式授权代表我所代表的供应商上传此投标书。</label>
+                </div>
+                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                  <input type="checkbox" class="custom-control-input" id="uploadTenderDocsInputCheckboxTerms" required>
+                  <label class="custom-control-label" for="uploadTenderDocsInputCheckboxTerms">我同意 <a href="/docs/terms.pdf" target="_blank">条款和条件</a>.</label>
+                </div>
+                <button type="submit" class="btn btn-primary my-1" id="uploadTenderDocsButtonSubmit">上传招标文件</button>
+              </form>
+            </div>
+          </div>
+          <div class="row align-items-center justify-content-center" id="verifyTenderDocsRow">
+            <div class="col-md-8 order-md-1">
+              <h4>
+                <p class="text-muted text-center">验证招标文件</p>
+              </h4>
+              <small class="text-muted">ZIP文件的大小限制为10MB</small>
+              <form class="card p-2" id="verifyTenderDocsForm">
+                <div class="custom-file mb-3">
+                  <input type="file" accept=".zip,application/zip" class="custom-file-input" data-text="Upload ZIP file of tender documents" data-dragdrop="true" id="verifyTenderDocsInputFileZIP" data-buttonBefore="true" required>
+                  <label class="custom-file-label" for="verifyTenderDocsInputFileZIP" id="verifyTenderDocsLabelFileZIP">上传招标ZIP文件</label>
+                </div>
+                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                  <input type="checkbox" class="custom-control-input" id="verifyTenderDocsInputCheckboxTerms" required>
+                  <label class="custom-control-label" for="verifyTenderDocsInputCheckboxTerms">我同意 <a href="/docs/terms.pdf" target="_blank">条款和条件</a>.</label>
+                </div>
+                <button type="submit" class="btn btn-primary my-1" id="verifyTenderDocsButtonSubmit">验证招标文件</button>
+              </form>
+            </div>
+          </div>
+          <div class="row align-items-center justify-content-center" id="retrieveTenderDocsAddressRow">
+            <div class="col-md-8 order-md-1">
+              <h4>
+                <p class="text-muted text-center">检索投标文件提交者地址</p>
+              </h4>
+              <small class="text-muted">ZIP文件的大小限制为10MB</small>
+              <form class="card p-2" id="retrieveTenderDocsAddressForm">
+                <div class="custom-file mb-3">
+                  <input type="file" accept=".zip,application/zip" class="custom-file-input" data-text="Upload ZIP file of tender documents" data-dragdrop="true" id="retrieveTenderDocsAddressInputFileZIP" data-buttonBefore="true" required>
+                  <label class="custom-file-label" for="retrieveTenderDocsAddressInputFileZIP" id="retrieveTenderDocsAddressLabelFileZIP">上传招标ZIP文件</label>
+                </div>
+                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                  <input type="checkbox" class="custom-control-input" id="retrieveTenderDocsAddressInputCheckboxTerms" required>
+                  <label class="custom-control-label" for="retrieveTenderDocsAddressInputCheckboxTerms">我同意 <a href="/docs/terms.pdf" target="_blank">条款和条件</a>。</label>
+                </div>
+                <button type="submit" class="btn btn-primary my-1" id="retrieveTenderDocsAddressButtonSubmit">检索投标文件提交者地址</button>
+              </form>
+            </div>
+          </div>
+          <div class="row align-items-center justify-content-center" id="getTenderDocsCountRow">
+            <div class="col-md-8 order-md-1">
+              <h4>
+                <p class="text-muted text-center">计算投标数量</p>
+              </h4>
+              <!-- Get # of tender document submissions -->
+              <div id="getTenderDocsCount"></div>
+              <button type="button" class="btn btn-primary btn-lg btn-block" id="tenderDocsCountButton">显示投标文件总数</button>
+            </div>
+          </div>
+          <div class="row align-items-center justify-content-center" id="checkContractStatusRow">
+            <div class="col-md-8 order-md-1">
+              <h4>
+                <p class="text-muted text-center">检查合约状态</p>
+              </h4>
+              <!-- Check whether the contract is stopped or not -->
+              <div id="checkContractStatus"></div>
+              <button type="button" class="btn btn-primary btn-lg btn-block" id="checkContractStatusButton">检查合约状态</button>
+            </div>
+          </div>
+          <div class="row align-items-center justify-content-center" id="toggleContractStatusRow">
+            <div class="col-md-8 order-md-1">
+              <h4>
+                <p class="text-muted text-center">切换合约状态</p>
+              </h4>
+              <!-- set contract to stopped or not stopped -->
+              <div id="toggleContractStatus"></div>
+              <button type="button" class="btn btn-primary btn-lg btn-block" id="toggleContractStatusButton">切换合约状态</button>
+            </div>
+          </div>
+          <div class="row align-items-center justify-content-center" id="destroyContractRow">
+            <div class="col-md-8 order-md-1">
+              <h4>
+                <p class="text-muted text-center">销毁合约</p>
+              </h4>
+              <!-- call selfdestruct on contract -->
+              <div id="destroyContract"></div>
+              <button type="button" class="btn btn-primary btn-lg btn-block" id="destroyContractButton">开始销毁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- start footer -->
+    <% include ./partials/footer %>
+    <!-- end footer -->
+
+  </body>
+</html>
+

@@ -1,0 +1,46 @@
+<!-- views/partials/header.ejs -->
+<!-- START: header -->
+<!-- add immediately after body tag-->
+<div class="collapse bg-dark" id="navbarHeader">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-7 py-4">
+        <h4 class="text-white">SimpleFile 招投标存证系统</h4>
+        <p class="text-muted">招标是提供商品或从事特定工作的正式要约，是对服务提供商将收取的价格的声明。将合同招标后，将邀请正式报价。然后在提交时使用SimpleFile 招投标存证系统对招标文件（以zip格式）进行数字签名。在招标审查过程中，SimpleFile 招投标存证系统用于验证提交内容的真实性，并确保事后没有包括任何迟交的提交内容。</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<div class="navbar navbar-dark bg-dark shadow-sm">
+  <div class="container d-flex justify-content-between">
+    <a href="#" class="navbar-brand d-flex align-items-center" id="homeTenderDocsMenuButton">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      <strong>SimpleFile 招投标存证系统</strong>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</div>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading"><%= title_main %></h1>
+    <h3 class="jumbotron-heading"><%= title_sub %></h3>
+    <p class="lead text-muted">在提交时对招标文件（以zip格式）进行数字签名，并在招标审查过程中验证提交的真实性。</p>
+
+  </div>
+</section>
+<section class="text-center">
+<div>
+  <a href="#" class="btn btn-outline-primary my-2 btn-sm" aria-pressed="true" id="uploadTenderDocsMenuButton">上传招标文件</a>
+  <a href="#" class="btn btn-outline-secondary my-2 btn-sm" aria-pressed="true" id="verifyTenderDocsMenuButton">验证招标文件</a>
+  <a href="#" class="btn btn-outline-warning my-2 btn-sm" aria-pressed="true" id="retrieveTenderDocsAddressMenuButton">检索投标者提交人地址</a>
+  <a href="#" class="btn btn-outline-info my-2 btn-sm" aria-pressed="true" id="getTenderDocsCountMenuButton">计算投标数量</a>
+  <a href="#" class="btn btn-outline-dark my-2 btn-sm" aria-pressed="true" id="checkContractStatusMenuButton">检查合约状态</a>
+  <a href="#" class="btn btn-outline-success my-2 btn-sm" aria-pressed="true" id="toggleContractStatusMenuButton">切换合约状态</a>
+  <a href="#" class="btn btn-outline-danger my-2 btn-sm" aria-pressed="true" id="destroyContractMenuButton">销毁合约</a>
+  <p> </p>
+</div>
+</section>
+<!-- END: header -->

@@ -1,0 +1,9 @@
+Contract deployment details
+===========================
+
+Deployment date: 09 Feb 2020
+Mainnet: SIPC mainnet
+
+Contract deployed in net transaction: https://explorer.simplechain.com/transaction/0x391155849f1e98c890709256821611d260ae935fdb4f3e914fcd54bfdbbe03bd
+Contract deployed at net address: https://explorer.simplechain.com/contractDetail/0x958b66e98ed6d87bd8164c4e8035b2f5666c858c
+Contract creator: https://explorer.simplechain.com/account/0x099b9025615599aaa440affa301ff5fb85616e65"
