@@ -189,12 +189,12 @@ $(document).ready(function() {
         console.log("function handle_error(err).");
         var message_type = CONSTANTS.ERROR; //error or success
         var error_data = err.data;
-        var message_description = "Tender Submission Registry smart contract call failed: " + err;
+        var message_description = "投标存证智能合约调用失败： " + err;
         if (typeof error_data !== 'undefined'){
             var error_message = error_data.message;
             if (typeof error_message !== 'undefined')
             {
-                message_description = "Tender Submission Registry smart contract call failed: " + error_message;
+                message_description = "投标存证智能合约调用失败：" + error_message;
             }
         }
 
